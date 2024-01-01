@@ -109,6 +109,23 @@ And now it works! Success, victory, etc.
 
 **Lesson learned**: Past me clicked through a bunch of boring text and it turned out some of it was important. Maybe more actionable lesson: Think about security certificates.
 
+### Set up the file
+
+I'm going to keep this exercise in a file I hope will make sense to future me:
+
+medium_exercise/beginners_guide_exercise.py
+
+Also VScode suggested installing a Python extension so I'm doing that.
+
+Now I put this at the start of my new file:
+
+```
+#imports necessary libraries (Pandas, requests, BeautifulSoup) for web scraping and data manipulation.
+
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+```
 
 
 ## 2023.12.28
