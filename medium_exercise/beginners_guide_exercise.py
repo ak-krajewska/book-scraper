@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # send a request to goodreads
-url = "https://www.goodreads.com/"
+url = "https://www.goodreads.com/shelf/show/self-help"
 response = requests.get(url)
 html_content = response.text
 

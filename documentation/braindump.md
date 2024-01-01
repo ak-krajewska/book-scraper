@@ -150,6 +150,67 @@ Copy-pasted all the code samples from the Medium article with the following chan
 - Changed maxed number of pages to scrape to 2 from 200 (2 to make sure pagination works, but keeping it short)
 - Added comments to each code block so future me knows WTF I meant
 
+### Debugging the sample code
+
+1. No pandas
+
+Ran code, got this error:
+
+```
+potentia-est:book-scraper akrajewska$ /usr/local/bin/python3 /Users/akrajewska/Documents/projects/book-scraper/medium_exercise/beginners_guide_exercise.py
+Traceback (most recent call last):
+  File "/Users/akrajewska/Documents/projects/book-scraper/medium_exercise/beginners_guide_exercise.py", line 3, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+```
+
+I wonder what's the difference between a module and a library. I guess the article author must have already had `pandas` installed into their environment and didn't think to include it in the setup instructions. 
+
+To fix, I'm running
+
+```
+potentia-est:book-scraper akrajewska$ pip3 install pandas
+```
+
+That fixed the pandas error.
+
+2. BeautifulSoup finds the Response object has no len()
+
+```
+potentia-est:book-scraper akrajewska$ /usr/local/bin/python3 /Users/akrajewska/Documents/projects/book-scraper/medium_exercise/beginners_guide_exercise.py
+Traceback (most recent call last):
+  File "/Users/akrajewska/Documents/projects/book-scraper/medium_exercise/beginners_guide_exercise.py", line 13, in <module>
+    soup = BeautifulSoup(response, "html.parser")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/bs4/__init__.py", line 315, in __init__
+    elif len(markup) <= 256 and (
+         ^^^^^^^^^^^
+TypeError: object of type 'Response' has no len()
+```
+
+I think that means that the Response object is not the type of object that has a len() method. This is a bit more thorny. I will ask my coding buddy, ChatGPT, for help.
+
+Here's what ChatGPT says
+
+```
+The error indicates a TypeError in the BeautifulSoup constructor, specifically related to the length of the markup. The markup argument for BeautifulSoup is expected to be a string or an object that supports the Python len() function. In this case, it seems like you are passing a Response object, which does not have a length.
+
+You should extract the content from the Response object before passing it to BeautifulSoup. Assuming you are using the requests library for making HTTP requests, you can modify your code like this:
+```
+
+Then it gives some sample code. So my guess and ChatGPTs suggestion match. I am using the requests library, so the fix will probably work.
+
+Something feels deeply wrong here. Why are we going to the Goodreads front page for the request? Instead of, as the exercise says earlier, the self-help books list, that is `https://www.goodreads.com/shelf/show/self-help`? 
+
+I'm starting to wonder if this is even real, workable code or just a content farm copypasta. I'm guilty of copy-pasting myself but now I wonder if I'd be better off just starting this from scratch and using ChatGPT to help me. 
+
+I'm going to try replacing the vague URL with `https://www.goodreads.com/shelf/show/self-help`.
+
+It doesn't make a difference I still get the same error. 
+
+Time to "phone a friend" and get an expert opinion if this is even a reasonable bit of sample code to follow.
+
+
 ## 2023.12.28
 
 ### How the book data is structured in Goodreads
