@@ -127,6 +127,28 @@ import requests
 from bs4 import BeautifulSoup
 ```
 
+Following the exercise is mostly copy-paste at this point.
+
+```
+import requests
+
+url = "https://www.goodreads.com/"
+response = requests.get(url)
+html_content = response.text
+```
+
+Why is the code snippet telling me to import requests again? Seems weird. Is the exercise expecting I'll do this in a different file? I confess I haven't been reading that closely.
+
+I read the article all the way through. Arguably maybe I should have done that to begin with, just like you're supposed to read the whole recipe before you start cooking. Luckily with code, you can always unscramble the eggs, as it were. Anyway, the author helpfully provides a link to their GitHub repo at the end so I can find an answer to my question about the seemingly doubled import.
+
+https://github.com/Adesuaayo/goodreads_webscraper/tree/main
+
+OK, no. The project described in the repo appears to be a different one than described in the Medium article. It imports additional dependencies and seems to output some kind of top rating analysis. Whatever I guess I'll have to use my own reasoning to figure the rest of this out. Onward. Also the audience for this sample code seems to be data analysts who want to analyze Goodreads, not book nerds who want to extract their own data. 
+
+Copy-pasted all the code samples from the Medium article with the following changes:
+- Omitted duplicative `requests` import
+- Changed maxed number of pages to scrape to 2 from 200 (2 to make sure pagination works, but keeping it short)
+- Added comments to each code block so future me knows WTF I meant
 
 ## 2023.12.28
 
