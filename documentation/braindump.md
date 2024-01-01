@@ -1,6 +1,115 @@
 # Running braindump
 
-A reverse-chronological collection of notes, questions, references, plans, and pretty much everything else that comes up as I work on this project.
+A reverse-chronological collection of notes, questions, references, plans, and pretty much everything else that comes up as I work on this project. 
+
+## 2024.01.01
+
+I should probably follow one of the existing scraper scripts and try to make it work before I go further down the data structure rabbit hole. 
+
+I've decided to use [Scraping Goodreads: A Beginner’s Guide](https://medium.com/@adesua/scraping-goodreads-a-beginners-guide-3ad3a5907c2a).
+
+### Install vs import
+
+What's the difference between importing a library and installing a library? That is, what's the difference between
+
+```
+pip install requests
+```
+
+and 
+
+```
+import requests
+```
+
+Answer (after conversation with friend):
+
+`install` is for installing the library into your development environment, for example, your computer. You only have to do it once (except for upgrades, of course).
+
+`import` is for making the library available in your code, for a particular program. You have to import whenever you want to use the library.
+
+Previously, I thought Python was kind of magic because it seemed like you could `import` whatever you wanted without having to install it. That was just because Python has a bunch of built-in libraries it comes with, called standard libraries. Why not always have all the standard libraries available? Because it keeps the code smaller to only import the libraries you're going to use. 
+
+Useful note: It doesn't matter what directory you're in when running `pip install`.
+
+### Trying to install - friction log
+
+`pip install beautifulsoup4 requests` threw an error
+
+```
+potentia-est:book-scraper akrajewska$ pip install beautifulsoup4 requests
+-bash: /usr/local/bin/pip: /usr/bin/python: bad interpreter: No such file or directory
+```
+
+This is probably because `pip` assumes Python 2 and I am on Python 3. Weird that the instructions are written this way since the article was published Sept 12, 2023. 
+
+Onward then with `pip3` instead.
+
+It's a new and different error message:
+
+```
+potentia-est:book-scraper akrajewska$ pip3 install beautifulsoup4 requests
+pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
+Collecting beautifulsoup4
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/beautifulsoup4/
+  Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/beautifulsoup4/
+  Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/beautifulsoup4/
+  Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/beautifulsoup4/
+  Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/beautifulsoup4/
+  Could not fetch URL https://pypi.org/simple/beautifulsoup4/: There was a problem confirming the ssl certificate: HTTPSConnectionPool(host='pypi.org', port=443): Max retries exceeded with url: /simple/beautifulsoup4/ (Caused by SSLError("Can't connect to HTTPS URL because the SSL module is not available.")) - skipping
+  Could not find a version that satisfies the requirement beautifulsoup4 (from versions: )
+No matching distribution found for beautifulsoup4
+pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
+Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming the ssl certificate: HTTPSConnectionPool(host='pypi.org', port=443): Max retries exceeded with url: /simple/pip/ (Caused by SSLError("Can't connect to HTTPS URL because the SSL module is not available.")) - skipping
+potentia-est:book-scraper akrajewska$ 
+```
+
+Checking where my python3 lives:
+
+```
+potentia-est:book-scraper akrajewska$ which python3
+/usr/local/bin/python
+```
+
+Apparently this is weird and past me may have done something weird and/or bad. Also checking my Python version:
+
+```
+potentia-est:book-scraper akrajewska$ python3 --version
+Python 3.7.1
+```
+
+Also it's out of date. Getting an update from https://www.python.org/.
+
+Downloads > Download for macOS
+
+Ran through the wizard, which has a lot of blah blah blah, but one rather important bit at the end
+
+```
+Congratulations!  Python 3.12.1 for macOS 10.9 or later was successfully installed.
+
+One more thing: to verify the identity of secure network connections, this Python needs a set of SSL root certificates.  You can download and install a current curated set from the Certifi project by double-clicking on the Install Certificates icon in the Finder window.  See the ReadMe file for more information.
+```
+
+I probably skipped this (because blah blah blah) when I installed the old version of Python previously.
+
+So in Finder, I click Install Certificates.command and it fires up a terminal window and runs some processes, with a confirmation message like this that it finished
+
+```
+Installing collected packages: certifi
+Successfully installed certifi-2023.11.17
+```
+
+Now that I have updated and installed the certificate, I try again:
+
+```
+pip3 install beautifulsoup4 requests
+```
+
+And now it works! Success, victory, etc.
+
+**Lesson learned**: Past me clicked through a bunch of boring text and it turned out some of it was important. Maybe more actionable lesson: Think about security certificates.
+
+
 
 ## 2023.12.28
 
