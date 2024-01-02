@@ -8,8 +8,8 @@ import requests
 from bs4 import BeautifulSoup
 
 # send a request to Goodreads
-url = 'https://www.goodreads.com/shelf/show/self-help'
-response = requests.get(url)
+base_url = 'https://www.goodreads.com/shelf/show/self-help'
+response = requests.get(base_url)
 # print(response.text) # check if the response worked
 html_content = response.text
 # print(html_content) # check if the response worked
@@ -38,6 +38,16 @@ rating = []
 year = []
 
 # iterate through the pages to scrape
+# TODO make quotatin marks consistent
+
+for page in range(1, min(max_pages_to_scrape, total_pages) + 1):
+    # Construct the URL for the current page
+    url = f"{base_url}?page={page}"
+    # print(url) #check that the url pagination is working
+    response = requests.get(url).text
+    soup = BeautifulSoup(response, "html.parser")
+    book_elements = soup.find_all("div", "elementList")
+    # print(book_elements) #check that the books are getting slurped up correctly
 
 # structure data into a dataset for analysis
 

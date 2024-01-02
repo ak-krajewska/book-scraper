@@ -51,6 +51,10 @@ After poring over the example from the article, I realized it's reading the litt
 
 This is a weird data structure but I'm going to keep it just so I can fit it with the example code, hopefully.
 
+#### Iterate through the pages to scrape
+
+Figured out how to go through the pages. I mostly based this on the article example, except that the article had "base_url" a variable that was previously not defined. But if you use just "url" it gets wacky.
+
 ### Attempt to use Medium article
 
 **Summary:** The code given in the article doesn't run and I am giving up on it. Read this section for the saga.
