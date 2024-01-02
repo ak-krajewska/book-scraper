@@ -8,7 +8,12 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-# send a request to goodreads
+# send a request to Goodreads
+url = 'https://www.goodreads.com/shelf/show/self-help'
+response = requests.get(url)
+# print(response.text) # check if the response worked
+html_content = response.text
+# print(html_content) # check if the response worked
 
 # create a BeautifulSoup object to parse the HTML content
 

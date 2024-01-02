@@ -8,7 +8,22 @@ A reverse-chronological collection of notes, questions, references, plans, and p
 
 I created a new file, keeping the comments to help me structure it along with the imports header which I know works: `medium_exercise/shelf_scraper.py`
 
+#### Send a request to Goodreads
 
+[Requests library documentation](https://docs.python-requests.org/en/latest/index.html)
+
+[Make a Request](https://docs.python-requests.org/en/latest/user/quickstart/#make-a-request)
+
+I can adapt this to my code. This is how:
+
+```
+response = requests.get('https://www.goodreads.com/shelf/show/self-help')
+print(response.text)
+```
+
+If I try to just print `response` I get a type error because that's the whole response object. response.text grabs all the text, in this case, the entire HTML page. It works!
+
+Now I'll rework it so the URL is a variable for better reuseability, and also create a variable for the html_content, just following the exercise. It works!
 
 ### Attempt to use Medium article
 
