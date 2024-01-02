@@ -4,6 +4,12 @@ A reverse-chronological collection of notes, questions, references, plans, and p
 
 ## 2024.01.01
 
+### Attempt to write a scraper that does what the Medium tutorial purported to do
+
+I created a new file, keeping the comments to help me structure it along with the imports header which I know works: `medium_exercise/shelf_scraper.py`
+
+
+
 ### Attempt to use Medium article
 
 **Summary:** The code given in the article doesn't run and I am giving up on it. Read this section for the saga.
