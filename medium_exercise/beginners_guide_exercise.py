@@ -1,3 +1,8 @@
+# WARNING: This code doesn't run. It's taken from a Medium article tutorial:
+# https://medium.com/@adesua/scraping-goodreads-a-beginners-guide-3ad3a5907c2a
+# but it turns out the code doesn't work. 
+# I'm keeping it around in this repo for now just to document my attempts.
+
 #imports necessary libraries (Pandas, requests, BeautifulSoup) for web scraping and data manipulation.
 
 import pandas as pd
@@ -5,12 +10,12 @@ import requests
 from bs4 import BeautifulSoup
 
 # send a request to goodreads
-url = "https://www.goodreads.com/shelf/show/self-help"
+url = "https://www.goodreads.com/"
 response = requests.get(url)
 html_content = response.text
 
 # create a BeautifulSoup object to parse the HTML content
-soup = BeautifulSoup(response, "html.parser")
+soup = BeautifulSoup(response, "html.parser") #this should be html_content instead
 
 # calculate pages to scrape
 total_items_info = soup.find("div", class_="mediumText").get_text().strip()

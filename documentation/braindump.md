@@ -4,11 +4,15 @@ A reverse-chronological collection of notes, questions, references, plans, and p
 
 ## 2024.01.01
 
+### Attempt to use Medium article
+
+**Summary:** The code given in the article doesn't run and I am giving up on it. Read this section for the saga.
+
 I should probably follow one of the existing scraper scripts and try to make it work before I go further down the data structure rabbit hole. 
 
 I've decided to use [Scraping Goodreads: A Beginner’s Guide](https://medium.com/@adesua/scraping-goodreads-a-beginners-guide-3ad3a5907c2a).
 
-### Install vs import
+#### Install vs import
 
 What's the difference between importing a library and installing a library? That is, what's the difference between
 
@@ -32,7 +36,7 @@ Previously, I thought Python was kind of magic because it seemed like you could 
 
 Useful note: It doesn't matter what directory you're in when running `pip install`.
 
-### Trying to install - friction log
+#### Trying to install - friction log
 
 `pip install beautifulsoup4 requests` threw an error
 
@@ -109,7 +113,7 @@ And now it works! Success, victory, etc.
 
 **Lesson learned**: Past me clicked through a bunch of boring text and it turned out some of it was important. Maybe more actionable lesson: Think about security certificates.
 
-### Set up the file
+#### Set up the file
 
 I'm going to keep this exercise in a file I hope will make sense to future me:
 
@@ -150,7 +154,7 @@ Copy-pasted all the code samples from the Medium article with the following chan
 - Changed maxed number of pages to scrape to 2 from 200 (2 to make sure pagination works, but keeping it short)
 - Added comments to each code block so future me knows WTF I meant
 
-### Debugging the sample code
+#### Debugging the sample code
 
 1. No pandas
 
@@ -210,6 +214,9 @@ It doesn't make a difference I still get the same error.
 
 Time to "phone a friend" and get an expert opinion if this is even a reasonable bit of sample code to follow.
 
+#### Abandon ship
+
+After consulting with a Python expert, I am abandoning this exercise and will instead write something from scratch. There are indeed a lot of errors and the code doesn't all fit together. These are things that would be relatively easy for a Python expert to debug but the point of following a tutorial was to get something that just runs and then build on it. If the tutorial doesn't run, I might as well just bang my head against a wall with my own code.
 
 ## 2023.12.28
 
