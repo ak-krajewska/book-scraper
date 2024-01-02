@@ -43,6 +43,12 @@ And that worked! (After an initial syntax error where I accidentally typed in "p
 
 I used `print(soup)` just to check what the output looks like and it looks like nicely formatted HTML. 
 
+#### Calculate pages to scrape
+
+After poring over the example from the article, I realized it's reading the little thingie at the top of the page that says "Showing 1-50 of 100,000" and then manipulating that string to figure out the number of items total, and turn that into an int. For some reason the example is just assigning the items per page even though it could detect that, too. All this made me realize that if I want to learn to scrape a couple of pages from a known list first, I could just assign the numbers of items per page and the number of pages directly and come back to write this later.
+
+
+
 ### Attempt to use Medium article
 
 **Summary:** The code given in the article doesn't run and I am giving up on it. Read this section for the saga.

@@ -19,6 +19,13 @@ soup = BeautifulSoup(html_content, 'html.parser')
 
 # calculate pages to scrape
 
+# for the purposes of the learning example
+# just assign the number of pages
+# and items per page
+
+total_pages = 10 # magic number, assigning just for practice
+max_pages_to_scrape = 2 # magic number, assigning just for practice
+
 # create empty lists to store the data that script will scrape
 
 # iterate through the pages to scrape
