@@ -55,6 +55,12 @@ This is a weird data structure but I'm going to keep it just so I can fit it wit
 
 Figured out how to go through the pages. I mostly based this on the article example, except that the article had "base_url" a variable that was previously not defined. But if you use just "url" it gets wacky.
 
+#### Scrape each book and structure data
+
+Scraping each book and structuring data code just worked from the example code. I think it's a little ugly and the error handling could be better but forgeing ahead for now.
+
+
+
 ### Attempt to use Medium article
 
 **Summary:** The code given in the article doesn't run and I am giving up on it. Read this section for the saga.
