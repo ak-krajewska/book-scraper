@@ -25,6 +25,24 @@ If I try to just print `response` I get a type error because that's the whole re
 
 Now I'll rework it so the URL is a variable for better reuseability, and also create a variable for the html_content, just following the exercise. It works!
 
+#### Create a Beautiful Soup object to parse the HTML content
+
+[Beautiful Soup Documentation](https://beautiful-soup-4.readthedocs.io/en/latest/)
+
+Here's how to pass text into Beautiful Soup [Making the Soup](https://beautiful-soup-4.readthedocs.io/en/latest/#making-the-soup)
+
+Now I am a little hungry.
+
+`soup = BeautifulSoup(html_content)` works but I get a warning that no parser was explicitly specified and it defaults to HTML. ChatGPT suggests specifying the HTML parser. The documentation has a section about that:
+
+[Specifying the parser to use](https://beautiful-soup-4.readthedocs.io/en/latest/#specifying-the-parser-to-use)
+
+It looks like the parser should be the second argument, like so `soup = BeautifulSoup(html_content, 'html.parser')`
+
+And that worked! (After an initial syntax error where I accidentally typed in "parser.html" instead).
+
+I used `print(soup)` just to check what the output looks like and it looks like nicely formatted HTML. 
+
 ### Attempt to use Medium article
 
 **Summary:** The code given in the article doesn't run and I am giving up on it. Read this section for the saga.

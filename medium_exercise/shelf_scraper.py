@@ -3,7 +3,6 @@
 # pip3 install pandas requests beautifulsoup4
 
 # imports libraries (Pandas, requests, BeautifulSoup) for web scraping and data manipulation
-
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
@@ -15,7 +14,8 @@ response = requests.get(url)
 html_content = response.text
 # print(html_content) # check if the response worked
 
-# create a BeautifulSoup object to parse the HTML content
+# create a Beautiful Soup object to parse the HTML content
+soup = BeautifulSoup(html_content, 'html.parser')
 
 # calculate pages to scrape
 
