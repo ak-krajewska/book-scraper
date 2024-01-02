@@ -6,6 +6,8 @@ A reverse-chronological collection of notes, questions, references, plans, and p
 
 ### Attempt to write a scraper that does what the Medium tutorial purported to do
 
+**Summary:** Proof of concept worked, borrowing from the sample code but cleaning up some wackiness.
+
 I created a new file, keeping the comments to help me structure it along with the imports header which I know works: `medium_exercise/shelf_scraper.py`
 
 #### Send a request to Goodreads
@@ -59,7 +61,11 @@ Figured out how to go through the pages. I mostly based this on the article exam
 
 Scraping each book and structuring data code just worked from the example code. I think it's a little ugly and the error handling could be better but forgeing ahead for now.
 
+#### Save as a CSV
 
+I mostly copied the sample code, except to inspect the code I used a print statement instead.
+
+And it all seems to work. I now have a pretty CSV of some scraped Goodreads data. 
 
 ### Attempt to use Medium article
 

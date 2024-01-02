@@ -85,5 +85,8 @@ good_reads = pd.DataFrame({
 })
 
 # display the first few rows to gut check dataset before saving
+print(good_reads.head()) #gut check if data seems good
 
 # save data to a CSV
+
+good_reads.to_csv("goodreads.csv", index=False)
