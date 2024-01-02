@@ -27,6 +27,15 @@ total_pages = 10 # magic number, assigning just for practice
 max_pages_to_scrape = 2 # magic number, assigning just for practice
 
 # create empty lists to store the data that script will scrape
+# This is a weird data structure but I'm going to keep it
+# just so I can fit it with the example code, hopefully
+
+title = []
+url_list = []
+authors = []
+avg_ratings = []
+rating = []
+year = []
 
 # iterate through the pages to scrape
 

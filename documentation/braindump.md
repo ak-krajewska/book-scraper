@@ -47,7 +47,9 @@ I used `print(soup)` just to check what the output looks like and it looks like 
 
 After poring over the example from the article, I realized it's reading the little thingie at the top of the page that says "Showing 1-50 of 100,000" and then manipulating that string to figure out the number of items total, and turn that into an int. For some reason the example is just assigning the items per page even though it could detect that, too. All this made me realize that if I want to learn to scrape a couple of pages from a known list first, I could just assign the numbers of items per page and the number of pages directly and come back to write this later.
 
+#### Create empty lists to store the data that script will scrape
 
+This is a weird data structure but I'm going to keep it just so I can fit it with the example code, hopefully.
 
 ### Attempt to use Medium article
 
