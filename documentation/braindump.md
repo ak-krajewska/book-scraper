@@ -21,6 +21,12 @@ As an aside, I just discovered Goodreads offers an RSS link from a uers' page (b
 
 Normally, I'm a big fan of sticking even obvious stuff into variables for readability, but creating the `html_content` object instead of just acessing the text portion of the page response with dot notation seems excessive, especially since it's accessed with dot notation later on in the code anyway.
 
+Now I'm trying to get the number of books per page. I ran into an error because `str.split()` without arguments leaves `1-50` so it can't be converted from a string using `int`. I bet this is why the person who wrote the Medium article ended up magic numbering it. Time to check the documentation for `str.split()`
+
+Looks like I might need to use regular expressions. Which means I need to import regular expressions. 
+
+And if I'm going to split on the `-` as well as blank space to get a nice list, I might as well also turn the `100,000` to `100000` in one go. Or at least in one chunk of code that prepares the input for use.
+
 ## 2024.01.01
 
 ### Attempt to write a scraper that does what the Medium tutorial purported to do

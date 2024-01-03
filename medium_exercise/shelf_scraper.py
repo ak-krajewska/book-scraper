@@ -6,6 +6,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+import re
 
 # send a request to Goodreads
 
@@ -22,6 +23,21 @@ response = requests.get(base_url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
 # calculate pages to scrape
+
+# find the total number of books and books per page
+
+# grab the text from the top that says something like
+# "Showing 1-50 of 100,000" and parsing it
+total_items_info = soup.find("div", class_="mediumText").get_text().strip()
+
+# make a useful list of the items info
+# use a regular expression to split the string and remove commas in numbers
+total_items_list = re.findall(r'\b[\w,]+\b', total_items_info.replace(',', ''))
+print(total_items_list)
+total_items = int(total_items_list[-1])
+print(f"total items is {total_items}")
+items_per_page = int(total_items_list[2])
+print(f"items per page is {items_per_page}")
 
 # for the purposes of the learning example
 # just assign the number of pages
