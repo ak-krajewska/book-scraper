@@ -8,14 +8,18 @@ import requests
 from bs4 import BeautifulSoup
 
 # send a request to Goodreads
-base_url = 'https://www.goodreads.com/shelf/show/self-help'
-response = requests.get(base_url)
-# print(response.text) # check if the response worked
-html_content = response.text
-# print(html_content) # check if the response worked
 
-# create a Beautiful Soup object to parse the HTML content
-soup = BeautifulSoup(html_content, 'html.parser')
+# set the shelf you want to read from. Later this could be user input
+base_url = 'https://www.goodreads.com/shelf/show/self-help'
+
+# save the response into an object
+response = requests.get(base_url)
+
+# TODO: catch errors from the response and alert user with a helpful message
+# print(response.text) # check if the response worked
+
+# create a Beautiful Soup object to parse the text inside the response
+soup = BeautifulSoup(response.text, 'html.parser')
 
 # calculate pages to scrape
 

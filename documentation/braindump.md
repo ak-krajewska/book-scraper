@@ -2,6 +2,25 @@
 
 A reverse-chronological collection of notes, questions, references, plans, and pretty much everything else that comes up as I work on this project. 
 
+## 2024.01.02
+
+### Planned improvements
+
+I'd like to refactor the slightly cleaned up sample code:
+- It's sending a request to Goodreads twice using almost the same format
+- Grabbing the same value (the URL) but for some reason using different variables
+- The way it was counting the pages to calculate the total seemed silly
+- The data structure for the books is weird. Why store all the titles in one list, then all the authors in another, and so on? It would be better for each book to be a dict with all the values, IMO.
+- It would be nice in the future to take user input about what specific page to scrape
+
+### RSS maybe
+
+As an aside, I just discovered Goodreads offers an RSS link from a uers' page (but not a general public bookshelf) and possibly it might be easier to grab my data from the RSS. While messing about with that, I had to install `lxml` so if I decide to use that, I will want to mention that I installed it in any tutorials.
+
+### Little cleanups
+
+Normally, I'm a big fan of sticking even obvious stuff into variables for readability, but creating the `html_content` object instead of just acessing the text portion of the page response with dot notation seems excessive, especially since it's accessed with dot notation later on in the code anyway.
+
 ## 2024.01.01
 
 ### Attempt to write a scraper that does what the Medium tutorial purported to do
