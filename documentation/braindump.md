@@ -2,6 +2,46 @@
 
 A reverse-chronological collection of notes, questions, references, plans, and pretty much everything else that comes up as I work on this project. 
 
+## 2024.01.06
+
+### Rethinking the page count for pagination
+
+Calculating the total number of pages from a bit of text at the start of the first page as the example did and then as I did, slightly more cleanly, when I last touched this code, is actually not that stable. What if Goodreads changes the name of that div or moves it to another place? And why do I even need it anyway? It would be better to look for the "Next page" link whatever it may be, and page through that until either there are no more "nexts" or some set number of max pages, whichever comes first. I could initially set the number of max pages at some low number for safety, just to make testing easier as I work, and eventually have it take a user input. There could be some safe default I've chosen, and the script could ask the user to accept, enter a different number, or say they want all of them.
+
+Here's my pseudocode for getting the book data
+
+```
+Retrieve book data function that takes a page url as an argument
+  Get page data from the url
+    Parse the page data and save for each book the following items
+      book title
+      book url
+      author
+      average rating
+      number of ratings
+      year published
+    Traverse the pagination
+      If a next page exists
+        Get the next page url
+        Assign the next page url to page url
+        Send it back to the Retrieve book data function
+      Else (if no next page exists)
+        We are done here
+
+
+
+```
+
+### Library for user inputs
+
+Click is a library for handling user inputs I might want to look into later.
+
+### Goodreads API docs for reference
+
+[Goodreads API documentation](https://www.goodreads.com/api/index#book.isbn_to_id)
+
+Although it's no longer issuing keys and might not be supported anymore, the Goodreads API documentation might be useful as to do what I was thinking about [earlier](#2023.12.28) when I tried to reverse-engineer the data schema.
+
 ## 2024.01.02
 
 ### Planned improvements
