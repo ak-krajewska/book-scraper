@@ -99,7 +99,14 @@ def get_books(page_url):
         num_ratings = rating_text[4]
         published_year = rating_text[-1] if len(rating_text) == 9 else ""
         # create a dict for a single book
-        book = {'book_title': book_title, 'book_url': book_url, 'author': author, 'avg_rating': avg_rating, 'num_ratings': num_ratings, 'published_year': published_year}
+        book = {
+            'book_title': book_title, 
+            'book_url': book_url, 
+            'author': author, 
+            'avg_rating': avg_rating, 
+            'num_ratings': num_ratings, 
+            'published_year': published_year,
+        }
         # append the book dict to the list of books
         books.append(book)
     
