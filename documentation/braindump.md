@@ -28,9 +28,35 @@ Retrieve book data function that takes a page url as an argument
       Else (if no next page exists)
         We are done here
 
-
-
 ```
+
+Getting the books into a list of dicts took some doing. I didn't want to reuse the exercise's error checker which just threw out any incomplete books. Inspecting the page code, I found that there were elements that looked like books but were videos. However, all the books were inside a single container, and so I rewrote the bit that found all the books to only look for book elements inside the book container. However, using more than one CSS selector in the search necessitated using a different Beautiful Soup method, select_all instead of find_all. I spent a bit of time reading the Beautiful Soup docs to figure that out. I also asked ChatGPT to help me with the syntax, and between that and the docs I think what I have is OK. Certainly, it's running and it's populating the list so I'm pretty happy.
+
+Next, I have to get that recursion. Except for safety I want to stop it after some number of times or else the file will get huge and also Goodreads might get mad at me for making an inhumanly large amount of calls.
+
+So here's a wacky thing I discovered. Goodreads shows the "next" button even if there's no "next" on a public shelf. Eventually, you click "next" and get a 404. Also, the counted pages are completely illusory. You can click too far down the list and get, you guessed it, a 404. This feels like abandonware, damn :(
+
+I am testing if the same thing happens on an individual user's list. So far, I got a timeout once, so that's not great. I'll have to account for timeouts and retrys in my code.
+
+Big sigh of relief: on a personal shelf, you do eventually get a "next" without a link, which indicates you've come to the end. I was briefly worried it would do some kind of loop around so you never felt like you ran out. So that's something.
+
+I guess for the public shelf project I can check if the title is not "Page not found" though I sort of hope that it sends back a 404 first, because what if someone is using the script in another lanugage?
+
+response.status_code should get the response code
+
+Weirdly I get a 404 through the web but not when I do it through the repl.
+
+### Cookies, unfortunately
+
+I tried to grab the "next" URL and I kept getting "None" weirdly. So then I inspected my BeautifulSoup soup object and I found that it didn't have next in it and also the HTML didn't quite match what I was seeing when I inspected it in Chrome.
+
+I had been looking at Goodreads while logged in as me, but my script is _not_ logged in. So, I tried opening the public shelf in another browser where I wasn't logged in and what do you know it had no "next" button. This explains why the sample script had the weird thing of counting how many pages there are. However, this will not work when I want to get my books and stuff.
+
+I'm going to need to somehow pass my cookie with my HTTP request. I don't know how to do that but I can learn how.
+
+This will make it more complicated to ship the script for other people in a useful way, but again, there are ways to make it work. I'll figure it out. But not today.
+
+For development, I will use my personal cookie for Goodreads. I'll need to store it in a secrets file that is in .gitignore so that other people don't log in as me and mess up my account. That all sounds like a lot of work and I will not do it today.
 
 ### Library for user inputs
 

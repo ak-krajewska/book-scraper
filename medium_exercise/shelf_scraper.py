@@ -36,11 +36,11 @@ total_items_info = soup.find("div", class_="mediumText").get_text().strip()
 # make a useful list of the items info
 # use a regular expression to split the string and remove commas in numbers
 total_items_list = re.findall(r'\b[\w,]+\b', total_items_info.replace(',', ''))
-print(total_items_list)
+# print(total_items_list)
 total_items = int(total_items_list[-1])
-print(f"total items is {total_items}")
+# print(f"total items is {total_items}")
 items_per_page = int(total_items_list[2])
-print(f"items per page is {items_per_page}")
+# print(f"items per page is {items_per_page}")
 
 # for the purposes of the learning example
 # just assign the number of pages
@@ -78,7 +78,6 @@ def get_books(page_url):
     # create a Beautiful Soup object to parse the text inside the response
     soup = BeautifulSoup(response.text, 'html.parser')
 
-
     # parse book data and save each book
   
     # book_container = soup.find_all("div", class_="leftContainer")
@@ -87,7 +86,7 @@ def get_books(page_url):
     # rather than the soup.find_all method
 
     book_elements = soup.select('.leftContainer .elementList')
-    print(f"{book_elements} end of book elements")
+    # print(f"{book_elements} end of book elements")
     for book_element in book_elements:
         # print(book_element) # debug 
         # actually I only want element lists within the container class="leftContainer"
@@ -103,6 +102,15 @@ def get_books(page_url):
         book = {'book_title': book_title, 'book_url': book_url, 'author': author, 'avg_rating': avg_rating, 'num_ratings': num_ratings, 'published_year': published_year}
         # append the book dict to the list of books
         books.append(book)
+    
+    # traverse the pagination
+        # check if there's a next page
+        # here's what the selector looks like:
+        # <a class="next_page" rel="next" href="/shelf/show/self-help?page=2">next »</a>
+    # TODO: pass in a cookie so that the script actually sees "Next"
+    next_page = soup.find('a', class_='next_page') # This returns None because logged out users don't see next
+    print(f"Here is the next page {next_page}")
+        
 
 get_books(base_url)   
 
