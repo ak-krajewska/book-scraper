@@ -3,7 +3,8 @@ Scrape my Goodreads books list, including info missing from official export like
 
 ## Project status
 
-Research and requirement gathering
+- Research and requirement gathering
+- Experimenting with a simplified form of the project first
 
 ## Verbose status
 
